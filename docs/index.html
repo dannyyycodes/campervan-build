@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Campervan Build — Citroën Relay / Fiat Ducato L3 H3</title>
+<title>Campervan Build — Citroën Relay / Fiat Ducato L4 H3</title>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <style>
   html,body{margin:0;height:100%;background:#d2d6da;font-family:system-ui,Segoe UI,Arial,sans-serif;color:#222}
-  model-viewer{width:100vw;height:100vh}
-  model-viewer{position:relative;z-index:1}
+  model-viewer{position:relative;z-index:1;width:100vw;height:100vh}
   .hud{position:fixed;left:14px;top:12px;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(4px);
        padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5;max-width:340px;box-shadow:0 2px 14px rgba(0,0,0,.14)}
   .hud b{font-size:15px}
@@ -23,35 +23,34 @@
 </head>
 <body>
 <div class="hud">
-  <b>Campervan Build — L3 H3</b><br>
+  <b>Campervan Build — L4 H3</b><br>
   <span style="color:#555">Citroën Relay / Fiat Ducato · real model, to scale</span>
   <div class="btns">
     <button id="bVan" class="on" onclick="set('van')">Real van</button>
     <button id="bIn" onclick="set('inside')">See inside</button>
   </div>
-  <div id="cap">The real Ducato/Relay, scaled to your exact L3 H3 (5998 × 2050 × 2764 mm).</div>
+  <div id="cap">The real Ducato/Relay, extra-long L4 H3, scaled to 6363 × 2050 × 2764 mm.</div>
   <div class="keys">Drag = spin · scroll = zoom · right-drag = slide</div>
   <div class="lk"><a href="https://github.com/dannyyycodes/campervan-build/tree/main/plan">📋 Build plan (systems)</a></div>
 </div>
 <button class="reset" onclick="reset()">Reset view</button>
-<model-viewer id="mv" src="real_solid.glb" alt="campervan"
+<model-viewer id="mv" src="real_solid.glb?v=5" alt="campervan"
   camera-controls interaction-prompt="none" touch-action="none"
-  camera-orbit="-45deg 75deg 11m" camera-target="0m 0m 0.9m"
-  min-camera-orbit="auto auto 3m" max-camera-orbit="auto auto 45m"
+  camera-orbit="-45deg 76deg auto" field-of-view="32deg"
   shadow-intensity="1" exposure="1.05" environment-image="neutral">
 </model-viewer>
 <script>
 var V={
- van:{src:'real_solid.glb',orbit:'-45deg 75deg 11m',tgt:'0m 0m 0.9m',
-      cap:'The real Ducato/Relay, scaled to your exact L3 H3 (5998 × 2050 × 2764 mm).'},
- inside:{src:'real_inside.glb',orbit:'-55deg 72deg 9m',tgt:'1.4m 0m 1m',
+ van:{src:'real_solid.glb?v=5',orbit:'-45deg 76deg auto',
+      cap:'The real Ducato/Relay, extra-long L4 H3, scaled to 6363 × 2050 × 2764 mm.'},
+ inside:{src:'real_inside.glb?v=5',orbit:'-58deg 72deg auto',
       cap:'See inside — body ghosted: transverse bed (blue) on the garage (brown) + bedside shelves (green) at the rear.'}};
 var cur='van';
 function set(m){cur=m;var v=document.getElementById('mv');v.src=V[m].src;reset();
  document.getElementById('bVan').className=(m==='van')?'on':'';
  document.getElementById('bIn').className=(m==='inside')?'on':'';
  document.getElementById('cap').textContent=V[m].cap;}
-function reset(){var v=document.getElementById('mv');v.cameraOrbit=V[cur].orbit;v.cameraTarget=V[cur].tgt;}
+function reset(){var v=document.getElementById('mv');v.cameraOrbit=V[cur].orbit;}
 </script>
 </body>
 </html>
