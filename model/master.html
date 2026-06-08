@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ducato L3 H3 — van + build</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  html,body{margin:0;height:100%;background:#d2d6da;font-family:system-ui,Segoe UI,Arial,sans-serif;color:#222}
+  model-viewer{width:100vw;height:100vh}
+  .hud{position:fixed;left:14px;top:12px;background:rgba(255,255,255,.9);backdrop-filter:blur(4px);
+       padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5;max-width:330px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+  .hud b{font-size:14px}
+  .btns{margin-top:8px;display:flex;gap:8px}
+  .btns button{flex:1;padding:10px 6px;border:0;border-radius:8px;background:#e7eaee;color:#222;font-size:13px;cursor:pointer}
+  .btns button.on{background:#2b6cb0;color:#fff}
+  #cap{margin-top:8px;color:#444}
+  .keys{margin-top:8px;color:#555;font-size:12px}
+  button.reset{position:fixed;right:14px;top:12px;padding:9px 14px;border:0;border-radius:9px;background:#2b6cb0;color:#fff;font-size:13px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="hud">
+  <b>Fiat Ducato L3 (LWB) H3 + build</b><br>
+  <span style="color:#555">true size · 5998×2050×2764mm</span>
+  <div class="btns">
+    <button id="bIn" class="on" onclick="set('open')">See inside</button>
+    <button id="bOut" onclick="set('closed')">Full van</button>
+  </div>
+  <div id="cap">Cut-away: transverse bed + garage + bedside shelves inside the real van.</div>
+  <div class="keys">Drag = spin · scroll = zoom · right-drag = slide</div>
+</div>
+<button class="reset" onclick="reset()">Reset view</button>
+<model-viewer id="mv"
+  src="van_master_open.glb" alt="van build"
+  camera-controls interaction-prompt="none" touch-action="none"
+  camera-orbit="-60deg 72deg 8m" camera-target="2.3m 0.9m 0.7m"
+  min-camera-orbit="auto auto 2m" max-camera-orbit="auto auto 40m"
+  shadow-intensity="1" exposure="1.0" environment-image="neutral">
+</model-viewer>
+<script>
+var V={open:{src:'van_master_open.glb',orbit:'-60deg 72deg 8m',tgt:'2.3m 0.9m 0.7m',
+             cap:'Cut-away: transverse bed + garage + bedside shelves inside the real van.'},
+       closed:{src:'van_master_closed.glb',orbit:'-50deg 74deg 16m',tgt:'0.8m 0.9m 0.5m',
+             cap:'Full van: wheels, cab, high-roof body + roof rack (solar ~500W, Starlink, fan).'}};
+var cur='open';
+function set(m){cur=m;var v=document.getElementById('mv');v.src=V[m].src;reset();
+  document.getElementById('bIn').className=(m==='open')?'on':'';
+  document.getElementById('bOut').className=(m==='closed')?'on':'';
+  document.getElementById('cap').textContent=V[m].cap;}
+function reset(){var v=document.getElementById('mv');v.cameraOrbit=V[cur].orbit;v.cameraTarget=V[cur].tgt;}
+</script>
+</body>
+</html>

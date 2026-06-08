@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ducato L3 H3 — campervan shell</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  html,body{margin:0;height:100%;background:#cdd1d6;font-family:system-ui,Segoe UI,Arial,sans-serif;color:#222}
+  model-viewer{width:100vw;height:100vh;--poster-color:#cdd1d6}
+  .hud{position:fixed;left:14px;top:12px;background:rgba(255,255,255,.82);backdrop-filter:blur(4px);
+       padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.5;max-width:260px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+  .hud b{font-size:14px}
+  .hud .dim{color:#555}
+  .keys{margin-top:6px;color:#444}
+  button.reset{position:fixed;right:14px;top:12px;padding:9px 14px;border:0;border-radius:9px;
+       background:#2b6cb0;color:#fff;font-size:13px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<div class="hud">
+  <b>Fiat Ducato L3 (LWB) H3</b><br>
+  <span class="dim">Internal load bay — to scale</span><br>
+  Length 3705 mm · Width 1870 mm<br>
+  Height 2172 mm · arches 1422 apart
+  <div class="keys">
+    <b>Drag</b> = spin · <b>scroll</b> = zoom<br>
+    <b>right-drag</b> (or 2-finger) = slide<br>
+    lost it? hit <b>Reset view</b> →
+  </div>
+</div>
+<button class="reset" onclick="document.querySelector('model-viewer').cameraOrbit='-40deg 66deg 9m';document.querySelector('model-viewer').cameraTarget='1.4m 0.9m 0.6m'">Reset view</button>
+
+<model-viewer
+  src="van.glb"
+  alt="Ducato L3 H3 campervan shell"
+  camera-controls
+  interaction-prompt="none"
+  touch-action="none"
+  camera-orbit="-40deg 66deg 9m"
+  camera-target="1.4m 0.9m 0.6m"
+  min-camera-orbit="auto auto 2m"
+  max-camera-orbit="auto auto 25m"
+  shadow-intensity="0.9"
+  exposure="1.05"
+  environment-image="neutral">
+</model-viewer>
+</body>
+</html>

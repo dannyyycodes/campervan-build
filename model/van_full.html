@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiat Ducato L3 H3 — full van</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  html,body{margin:0;height:100%;background:#d2d6da;font-family:system-ui,Segoe UI,Arial,sans-serif;color:#222}
+  model-viewer{width:100vw;height:100vh}
+  .hud{position:fixed;left:14px;top:12px;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);
+       padding:10px 14px;border-radius:10px;font-size:13px;line-height:1.5;max-width:280px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+  .hud b{font-size:14px}.hud .dim{color:#555}.keys{margin-top:6px;color:#444}
+  button.reset{position:fixed;right:14px;top:12px;padding:9px 14px;border:0;border-radius:9px;
+       background:#2b6cb0;color:#fff;font-size:13px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+</style>
+</head>
+<body>
+<div class="hud">
+  <b>Fiat Ducato L3 (LWB) H3</b><br>
+  <span class="dim">Full van — true external size</span><br>
+  Length 5998 · Width 2050 · Height 2764 mm<br>
+  Wheelbase 4035 · wheels Ø744
+  <div class="keys"><b>Drag</b> = spin · <b>scroll</b> = zoom · <b>right-drag</b> = slide<br>lost it? <b>Reset view</b> →</div>
+</div>
+<button class="reset" onclick="var v=document.querySelector('model-viewer');v.cameraOrbit='-50deg 74deg 16m';v.cameraTarget='0.8m 0.9m 0.5m'">Reset view</button>
+<model-viewer
+  src="van_full.glb" alt="Fiat Ducato L3 H3 full van"
+  camera-controls interaction-prompt="none" touch-action="none"
+  camera-orbit="-50deg 74deg 16m" camera-target="0.8m 0.9m 0.5m"
+  min-camera-orbit="auto auto 4m" max-camera-orbit="auto auto 40m"
+  shadow-intensity="1" exposure="1.0" environment-image="neutral">
+</model-viewer>
+</body>
+</html>

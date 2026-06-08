@@ -1,0 +1,16 @@
+# Blender backups + caches
+*.blend1
+*.blend2
+__pycache__/
+*.pyc
+
+# OS cruft
+Thumbs.db
+.DS_Store
+
+# Keep the model source archives (provenance) and textures — do NOT ignore .fbx/.glb/.3ds
+
+real_ducato.glb
+ducato_L3H3_realimport.blend
+*.fbx
+*.rar

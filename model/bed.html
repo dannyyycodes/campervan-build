@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bed options — Ducato L3 H3</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<style>
+  html,body{margin:0;height:100%;background:#d2d6da;font-family:system-ui,Segoe UI,Arial,sans-serif;color:#222}
+  model-viewer{width:100vw;height:100vh}
+  .hud{position:fixed;left:14px;top:12px;background:rgba(255,255,255,.88);backdrop-filter:blur(4px);
+       padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5;max-width:320px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+  .hud b{font-size:14px}
+  .btns{margin-top:8px;display:flex;gap:8px}
+  .btns button{flex:1;padding:9px 6px;border:0;border-radius:8px;background:#e7eaee;color:#222;font-size:13px;cursor:pointer}
+  .btns button.on{background:#2b6cb0;color:#fff}
+  #cap{margin-top:8px;color:#444}
+  .keys{margin-top:8px;color:#555;font-size:12px}
+  button.reset{position:fixed;right:14px;top:12px;padding:9px 14px;border:0;border-radius:9px;background:#2b6cb0;color:#fff;font-size:13px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="hud">
+  <b>Bed layout — rear of van</b><br>
+  <span style="color:#555">L3 H3 · you = 6ft (1829mm)</span>
+  <div class="btns">
+    <button id="bT" class="on" onclick="set('transverse')">Across (transverse)</button>
+    <button id="bL" onclick="set('lengthways')">Lengthways</button>
+  </div>
+  <div id="cap">Transverse — sleeps across at 1830mm (6ft fits). Biggest living space. Garage underneath.</div>
+  <div class="keys">Drag = spin · scroll = zoom · right-drag = slide<br>Blue = mattress · green = shelves · purple = nightstand</div>
+</div>
+<button class="reset" onclick="var v=document.querySelector('model-viewer');v.cameraOrbit='-35deg 68deg 7m';v.cameraTarget='2.7m 0.9m 0.8m'">Reset view</button>
+<model-viewer id="mv"
+  src="van_bed_transverse.glb" alt="bed option"
+  camera-controls interaction-prompt="none" touch-action="none"
+  camera-orbit="-35deg 68deg 7m" camera-target="2.7m 0.9m 0.8m"
+  min-camera-orbit="auto auto 2m" max-camera-orbit="auto auto 20m"
+  shadow-intensity="0.9" exposure="1.05" environment-image="neutral">
+</model-viewer>
+<script>
+function set(m){
+  var v=document.getElementById('mv');
+  v.src='van_bed_'+m+'.glb';
+  document.getElementById('bT').className=(m==='transverse')?'on':'';
+  document.getElementById('bL').className=(m==='lengthways')?'on':'';
+  document.getElementById('cap').textContent=(m==='transverse')
+    ? 'Transverse — sleeps across at 1830mm (6ft fits). Biggest living space. Garage underneath.'
+    : 'Lengthways — sleeps along at 1950mm (loads of room). Keeps a walkway to the rear doors. Garage underneath.';
+}
+</script>
+</body>
+</html>
