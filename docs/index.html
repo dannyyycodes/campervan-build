@@ -8,48 +8,48 @@
 <style>
   html,body{margin:0;height:100%;background:#d2d6da;font-family:system-ui,Segoe UI,Arial,sans-serif;color:#222}
   model-viewer{width:100vw;height:100vh}
-  .hud{position:fixed;left:14px;top:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(4px);
+  model-viewer{position:relative;z-index:1}
+  .hud{position:fixed;left:14px;top:12px;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(4px);
        padding:12px 14px;border-radius:10px;font-size:13px;line-height:1.5;max-width:340px;box-shadow:0 2px 14px rgba(0,0,0,.14)}
   .hud b{font-size:15px}
-  .btns{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
-  .btns button{flex:1 1 auto;padding:10px 8px;border:0;border-radius:8px;background:#e7eaee;color:#222;font-size:13px;cursor:pointer}
+  .btns{margin-top:8px;display:flex;gap:8px}
+  .btns button{flex:1 1 auto;padding:11px 8px;border:0;border-radius:8px;background:#e7eaee;color:#222;font-size:14px;cursor:pointer}
   .btns button.on{background:#2b6cb0;color:#fff}
   #cap{margin-top:8px;color:#444}
   .keys{margin-top:8px;color:#666;font-size:12px}
   .lk{margin-top:8px;font-size:12px}.lk a{color:#2b6cb0;text-decoration:none}
-  button.reset{position:fixed;right:14px;top:12px;padding:9px 14px;border:0;border-radius:9px;background:#2b6cb0;color:#fff;font-size:13px;cursor:pointer}
+  button.reset{position:fixed;right:14px;top:12px;z-index:20;padding:9px 14px;border:0;border-radius:9px;background:#2b6cb0;color:#fff;font-size:13px;cursor:pointer}
 </style>
 </head>
 <body>
 <div class="hud">
   <b>Campervan Build — L3 H3</b><br>
-  <span style="color:#555">Citroën Relay / Fiat Ducato · to scale</span>
+  <span style="color:#555">Citroën Relay / Fiat Ducato · real model, to scale</span>
   <div class="btns">
-    <button id="bReal" class="on" onclick="set('real')">Van</button>
-    <button id="bIn" onclick="set('open')">See inside</button>
-    <button id="bOut" onclick="set('closed')">+ roof rack</button>
+    <button id="bVan" class="on" onclick="set('van')">Real van</button>
+    <button id="bIn" onclick="set('inside')">See inside</button>
   </div>
-  <div id="cap">Van to scale — L3 H3 (5998 × 2050 × 2764 mm).</div>
+  <div id="cap">The real Ducato/Relay, scaled to your exact L3 H3 (5998 × 2050 × 2764 mm).</div>
   <div class="keys">Drag = spin · scroll = zoom · right-drag = slide</div>
   <div class="lk"><a href="https://github.com/dannyyycodes/campervan-build/tree/main/plan">📋 Build plan (systems)</a></div>
 </div>
 <button class="reset" onclick="reset()">Reset view</button>
-<model-viewer id="mv" src="van_real.glb" alt="campervan"
+<model-viewer id="mv" src="real_solid.glb" alt="campervan"
   camera-controls interaction-prompt="none" touch-action="none"
-  camera-orbit="-50deg 74deg 16m" camera-target="0.8m 0.9m 0.5m"
+  camera-orbit="-45deg 75deg 11m" camera-target="0m 0m 0.9m"
   min-camera-orbit="auto auto 3m" max-camera-orbit="auto auto 45m"
   shadow-intensity="1" exposure="1.05" environment-image="neutral">
 </model-viewer>
 <script>
 var V={
- real:{src:'van_real.glb',orbit:'-50deg 74deg 16m',tgt:'0.8m 0.9m 0.5m',cap:'Van to scale — L3 H3 (5998 × 2050 × 2764 mm).'},
- open:{src:'van_master_open.glb',orbit:'-60deg 72deg 8m',tgt:'2.3m 0.9m 0.7m',cap:'Cut-away: transverse bed + garage + bedside shelves inside.'},
- closed:{src:'van_master_closed.glb',orbit:'-50deg 74deg 16m',tgt:'0.8m 0.9m 0.5m',cap:'Body + roof rack: solar ~500W, Starlink, fan.'}};
-var cur='real';
+ van:{src:'real_solid.glb',orbit:'-45deg 75deg 11m',tgt:'0m 0m 0.9m',
+      cap:'The real Ducato/Relay, scaled to your exact L3 H3 (5998 × 2050 × 2764 mm).'},
+ inside:{src:'real_inside.glb',orbit:'-55deg 72deg 9m',tgt:'1.4m 0m 1m',
+      cap:'See inside — body ghosted: transverse bed (blue) on the garage (brown) + bedside shelves (green) at the rear.'}};
+var cur='van';
 function set(m){cur=m;var v=document.getElementById('mv');v.src=V[m].src;reset();
- document.getElementById('bReal').className=(m==='real')?'on':'';
- document.getElementById('bIn').className=(m==='open')?'on':'';
- document.getElementById('bOut').className=(m==='closed')?'on':'';
+ document.getElementById('bVan').className=(m==='van')?'on':'';
+ document.getElementById('bIn').className=(m==='inside')?'on':'';
  document.getElementById('cap').textContent=V[m].cap;}
 function reset(){var v=document.getElementById('mv');v.cameraOrbit=V[cur].orbit;v.cameraTarget=V[cur].tgt;}
 </script>
