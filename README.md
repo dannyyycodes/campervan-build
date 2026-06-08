@@ -5,9 +5,9 @@ Full-time, off-grid, non-toxic camper conversion. A to-scale 3D model **plus** a
 **🔗 Live 3D viewer + plan:** https://dannyyycodes.github.io/campervan-build/
 
 ## The van
-Citroën Relay = Fiat Ducato = Peugeot Boxer (same SeVeL van) — **L3 (LWB) H3 (high roof)**, 3500kg, FWD, 2.3 MultiJet diesel, manual.
-- Interior load bay: **3705 × 1870 × 2172 mm** (1422 between wheel arches)
-- External: **5998 × 2050 × 2764 mm**, wheelbase 4035, wheels Ø744
+Citroën Relay = Fiat Ducato = Peugeot Boxer (same SeVeL van) — **L4 (XLWB) H3 (high roof)**, 3500kg, FWD, 2.3 MultiJet diesel, manual.
+- Interior load bay: **4070 × 1870 × 2172 mm** (1422 between wheel arches)
+- External: **6363 × 2050 × 2764 mm**, wheelbase 4035, wheels Ø744
 
 ## Brief (locked)
 - **Non-toxic + breathable:** sheep wool, formaldehyde-free birch ply, zero-VOC, **no spray foam, no Dynamat**.

@@ -34,16 +34,16 @@
   <div class="lk"><a href="https://github.com/dannyyycodes/campervan-build/tree/main/plan">📋 Build plan (systems)</a></div>
 </div>
 <button class="reset" onclick="reset()">Reset view</button>
-<model-viewer id="mv" src="real_solid.glb?v=5" alt="campervan"
+<model-viewer id="mv" src="real_solid.glb?v=6" alt="campervan"
   camera-controls interaction-prompt="none" touch-action="none"
   camera-orbit="-45deg 76deg auto" field-of-view="32deg"
   shadow-intensity="1" exposure="1.05" environment-image="neutral">
 </model-viewer>
 <script>
 var V={
- van:{src:'real_solid.glb?v=5',orbit:'-45deg 76deg auto',
+ van:{src:'real_solid.glb?v=6',orbit:'-45deg 76deg auto',
       cap:'The real Ducato/Relay, extra-long L4 H3, scaled to 6363 × 2050 × 2764 mm.'},
- inside:{src:'real_inside.glb?v=5',orbit:'-58deg 72deg auto',
+ inside:{src:'real_inside.glb?v=6',orbit:'-58deg 72deg auto',
       cap:'See inside — body ghosted: transverse bed (blue) on the garage (brown) + bedside shelves (green) at the rear.'}};
 var cur='van';
 function set(m){cur=m;var v=document.getElementById('mv');v.src=V[m].src;reset();
