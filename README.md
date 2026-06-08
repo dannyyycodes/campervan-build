@@ -27,4 +27,4 @@ Citroën Relay = Fiat Ducato = Peugeot Boxer (same SeVeL van) — **L4 (XLWB) H3
 
 Open the master model: `model/ducato_L3H3_master.blend` in Blender 4.5.
 
-> The viewer uses a real **Fiat Ducato** reference model (open3dmodel, personal-use licence), scaled to L3 H3, with the body ghosted on "See inside" to show the interior build. Used here for personal build-planning only.
+> **Van model credit:** This work is based on ["Ducato L4H2 Model"](https://sketchfab.com/3d-models/ducato-l4h2-model-93999aa5e0474681aa9ff1e10e742a4c) by [biryoldahavar](https://sketchfab.com/biryoldahavar), licensed under [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/). Uniform-scaled to L4 and body-ghosted for the "See inside" x-ray view.
